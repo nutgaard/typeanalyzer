@@ -1,0 +1,804 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Typeanalyzer Snapshot > should be able to create simple analysis 1`] = `
+ObjectCapture {
+  "fields": Map {
+    "id" => PrimitiveCapture {
+      "nullable": false,
+      "type": "TEXT",
+    },
+    "nullValue" => NullCapture {
+      "type": "NULL",
+    },
+    "active" => PrimitiveCapture {
+      "nullable": false,
+      "type": "BOOLEAN",
+    },
+    "count" => PrimitiveCapture {
+      "nullable": false,
+      "type": "INT",
+    },
+    "countLong" => PrimitiveCapture {
+      "nullable": false,
+      "type": "INT",
+    },
+    "fraction" => PrimitiveCapture {
+      "nullable": false,
+      "type": "DOUBLE",
+    },
+    "fractionFloat" => PrimitiveCapture {
+      "nullable": false,
+      "type": "DOUBLE",
+    },
+    "emptyArray" => ListCapture {
+      "nullable": false,
+      "subtype": UnknownCapture {
+        "type": "UNKNOWN",
+      },
+      "type": "LIST",
+    },
+    "listOfStuff" => ListCapture {
+      "nullable": false,
+      "subtype": ObjectCapture {
+        "fields": Map {
+          "id" => PrimitiveCapture {
+            "nullable": false,
+            "type": "TEXT",
+          },
+          "meta" => ObjectCapture {
+            "fields": Map {
+              "key" => PrimitiveCapture {
+                "nullable": false,
+                "type": "TEXT",
+              },
+              "key2" => PrimitiveCapture {
+                "nullable": false,
+                "type": "TEXT",
+              },
+            },
+            "nullable": false,
+            "type": "OBJECT",
+          },
+        },
+        "nullable": false,
+        "type": "OBJECT",
+      },
+      "type": "LIST",
+    },
+  },
+  "nullable": false,
+  "type": "OBJECT",
+}
+`;
+
+exports[`Typeanalyzer Snapshot > should make key mismatches into nullable elements 1`] = `
+ObjectCapture {
+  "fields": Map {
+    "key1" => PrimitiveCapture {
+      "nullable": false,
+      "type": "TEXT",
+    },
+  },
+  "nullable": false,
+  "type": "OBJECT",
+}
+`;
+
+exports[`Typeanalyzer Snapshot > should make key mismatches into nullable elements 2`] = `
+ObjectCapture {
+  "fields": Map {
+    "key2" => PrimitiveCapture {
+      "nullable": true,
+      "type": "TEXT",
+    },
+    "key1" => PrimitiveCapture {
+      "nullable": true,
+      "type": "TEXT",
+    },
+  },
+  "nullable": false,
+  "type": "OBJECT",
+}
+`;
+
+exports[`Typeanalyzer Snapshot > should not throw error 1`] = `
+ObjectCapture {
+  "fields": Map {
+    "id" => PrimitiveCapture {
+      "nullable": false,
+      "type": "TEXT",
+    },
+    "nullValue" => NullCapture {
+      "type": "NULL",
+    },
+    "active" => PrimitiveCapture {
+      "nullable": false,
+      "type": "BOOLEAN",
+    },
+    "count" => PrimitiveCapture {
+      "nullable": false,
+      "type": "INT",
+    },
+    "countLong" => PrimitiveCapture {
+      "nullable": false,
+      "type": "INT",
+    },
+    "fraction" => PrimitiveCapture {
+      "nullable": false,
+      "type": "DOUBLE",
+    },
+    "fractionFloat" => PrimitiveCapture {
+      "nullable": false,
+      "type": "DOUBLE",
+    },
+    "emptyArray" => ListCapture {
+      "nullable": false,
+      "subtype": UnknownCapture {
+        "type": "UNKNOWN",
+      },
+      "type": "LIST",
+    },
+    "listOfStuff" => ListCapture {
+      "nullable": false,
+      "subtype": ObjectCapture {
+        "fields": Map {
+          "id" => PrimitiveCapture {
+            "nullable": false,
+            "type": "TEXT",
+          },
+          "meta" => ObjectCapture {
+            "fields": Map {
+              "key" => PrimitiveCapture {
+                "nullable": false,
+                "type": "TEXT",
+              },
+              "key2" => PrimitiveCapture {
+                "nullable": false,
+                "type": "TEXT",
+              },
+            },
+            "nullable": false,
+            "type": "OBJECT",
+          },
+        },
+        "nullable": false,
+        "type": "OBJECT",
+      },
+      "type": "LIST",
+    },
+  },
+  "nullable": false,
+  "type": "OBJECT",
+}
+`;
+
+exports[`Typeanalyzer Snapshot > should override types even if types mismatch 1`] = `
+ObjectCapture {
+  "fields": Map {
+    "id" => PrimitiveCapture {
+      "nullable": false,
+      "type": "TEXT",
+    },
+    "nullValue" => NullCapture {
+      "type": "NULL",
+    },
+    "active" => PrimitiveCapture {
+      "nullable": false,
+      "type": "BOOLEAN",
+    },
+    "count" => PrimitiveCapture {
+      "nullable": false,
+      "type": "INT",
+    },
+    "countLong" => PrimitiveCapture {
+      "nullable": false,
+      "type": "INT",
+    },
+    "fraction" => PrimitiveCapture {
+      "nullable": false,
+      "type": "DOUBLE",
+    },
+    "fractionFloat" => PrimitiveCapture {
+      "nullable": false,
+      "type": "DOUBLE",
+    },
+    "emptyArray" => ListCapture {
+      "nullable": false,
+      "subtype": UnknownCapture {
+        "type": "UNKNOWN",
+      },
+      "type": "LIST",
+    },
+    "listOfStuff" => ListCapture {
+      "nullable": false,
+      "subtype": ObjectCapture {
+        "fields": Map {
+          "id" => PrimitiveCapture {
+            "nullable": false,
+            "type": "TEXT",
+          },
+          "meta" => ObjectCapture {
+            "fields": Map {
+              "key" => PrimitiveCapture {
+                "nullable": false,
+                "type": "TEXT",
+              },
+              "key2" => PrimitiveCapture {
+                "nullable": false,
+                "type": "TEXT",
+              },
+            },
+            "nullable": false,
+            "type": "OBJECT",
+          },
+        },
+        "nullable": false,
+        "type": "OBJECT",
+      },
+      "type": "LIST",
+    },
+  },
+  "nullable": false,
+  "type": "OBJECT",
+}
+`;
+
+exports[`Typeanalyzer Snapshot > should override types even if types mismatch 2`] = `
+ObjectCapture {
+  "fields": Map {
+    "active" => PrimitiveCapture {
+      "nullable": false,
+      "type": "BOOLEAN",
+    },
+    "count" => PrimitiveCapture {
+      "nullable": true,
+      "type": "INT",
+    },
+    "countLong" => PrimitiveCapture {
+      "nullable": true,
+      "type": "INT",
+    },
+    "fraction" => PrimitiveCapture {
+      "nullable": true,
+      "type": "DOUBLE",
+    },
+    "id" => PrimitiveCapture {
+      "nullable": true,
+      "type": "TEXT",
+    },
+    "nullValue" => NullCapture {
+      "type": "NULL",
+    },
+    "fractionFloat" => PrimitiveCapture {
+      "nullable": true,
+      "type": "DOUBLE",
+    },
+    "emptyArray" => ListCapture {
+      "nullable": true,
+      "subtype": UnknownCapture {
+        "type": "UNKNOWN",
+      },
+      "type": "LIST",
+    },
+    "listOfStuff" => ListCapture {
+      "nullable": true,
+      "subtype": ObjectCapture {
+        "fields": Map {
+          "id" => PrimitiveCapture {
+            "nullable": false,
+            "type": "TEXT",
+          },
+          "meta" => ObjectCapture {
+            "fields": Map {
+              "key" => PrimitiveCapture {
+                "nullable": false,
+                "type": "TEXT",
+              },
+              "key2" => PrimitiveCapture {
+                "nullable": false,
+                "type": "TEXT",
+              },
+            },
+            "nullable": false,
+            "type": "OBJECT",
+          },
+        },
+        "nullable": false,
+        "type": "OBJECT",
+      },
+      "type": "LIST",
+    },
+  },
+  "nullable": false,
+  "type": "OBJECT",
+}
+`;
+
+exports[`Typeanalyzer Snapshot > should prettyprint output 1`] = `
+"interface Generated_691eefc82ffff {
+  id: string;
+  nullValue: null | null;
+  active: boolean;
+  count: number;
+  countLong: number;
+  fraction: number;
+  fractionFloat: number;
+  emptyArray: Array<any>;
+  listOfStuff: Array<Generated_c66d29ffe7fff>;
+}
+
+interface Generated_c66d29ffe7fff {
+  id: string;
+  meta: Generated_16b7135188ffff;
+}
+
+interface Generated_16b7135188ffff {
+  key: string;
+  key2: string;
+}
+"
+`;
+
+exports[`Typeanalyzer Snapshot > should prettyprint output 2`] = `
+"data class Generated_691eefc82ffff(
+    val id: String,
+    val nullValue: Unit?,
+    val active: Boolean,
+    val count: Int,
+    val countLong: Int,
+    val fraction: Double,
+    val fractionFloat: Double,
+    val emptyArray: List<Any>,
+    val listOfStuff: List<Generated_c66d29ffe7fff>,
+)
+
+data class Generated_c66d29ffe7fff(
+    val id: String,
+    val meta: Generated_16b7135188ffff,
+)
+
+data class Generated_16b7135188ffff(
+    val key: String,
+    val key2: String,
+)
+"
+`;
+
+exports[`Typeanalyzer Snapshot > should reconcile nullability of preexisting fields 1`] = `
+ObjectCapture {
+  "fields": Map {
+    "id" => PrimitiveCapture {
+      "nullable": false,
+      "type": "TEXT",
+    },
+    "nullValue" => NullCapture {
+      "type": "NULL",
+    },
+    "active" => PrimitiveCapture {
+      "nullable": false,
+      "type": "BOOLEAN",
+    },
+    "count" => PrimitiveCapture {
+      "nullable": false,
+      "type": "INT",
+    },
+    "countLong" => PrimitiveCapture {
+      "nullable": false,
+      "type": "INT",
+    },
+    "fraction" => PrimitiveCapture {
+      "nullable": false,
+      "type": "DOUBLE",
+    },
+    "fractionFloat" => PrimitiveCapture {
+      "nullable": false,
+      "type": "DOUBLE",
+    },
+    "emptyArray" => ListCapture {
+      "nullable": false,
+      "subtype": UnknownCapture {
+        "type": "UNKNOWN",
+      },
+      "type": "LIST",
+    },
+    "listOfStuff" => ListCapture {
+      "nullable": false,
+      "subtype": ObjectCapture {
+        "fields": Map {
+          "id" => PrimitiveCapture {
+            "nullable": false,
+            "type": "TEXT",
+          },
+          "meta" => ObjectCapture {
+            "fields": Map {
+              "key" => PrimitiveCapture {
+                "nullable": false,
+                "type": "TEXT",
+              },
+              "key2" => PrimitiveCapture {
+                "nullable": false,
+                "type": "TEXT",
+              },
+            },
+            "nullable": false,
+            "type": "OBJECT",
+          },
+        },
+        "nullable": false,
+        "type": "OBJECT",
+      },
+      "type": "LIST",
+    },
+  },
+  "nullable": false,
+  "type": "OBJECT",
+}
+`;
+
+exports[`Typeanalyzer Snapshot > should reconcile nullability of preexisting fields 2`] = `
+ObjectCapture {
+  "fields": Map {
+    "id" => PrimitiveCapture {
+      "nullable": true,
+      "type": "TEXT",
+    },
+    "nullValue" => NullCapture {
+      "type": "NULL",
+    },
+    "active" => PrimitiveCapture {
+      "nullable": true,
+      "type": "BOOLEAN",
+    },
+    "count" => PrimitiveCapture {
+      "nullable": true,
+      "type": "INT",
+    },
+    "countLong" => PrimitiveCapture {
+      "nullable": true,
+      "type": "INT",
+    },
+    "fraction" => PrimitiveCapture {
+      "nullable": true,
+      "type": "DOUBLE",
+    },
+    "fractionFloat" => PrimitiveCapture {
+      "nullable": true,
+      "type": "DOUBLE",
+    },
+    "emptyArray" => ListCapture {
+      "nullable": true,
+      "subtype": UnknownCapture {
+        "type": "UNKNOWN",
+      },
+      "type": "LIST",
+    },
+    "listOfStuff" => ListCapture {
+      "nullable": true,
+      "subtype": ObjectCapture {
+        "fields": Map {
+          "id" => PrimitiveCapture {
+            "nullable": false,
+            "type": "TEXT",
+          },
+          "meta" => ObjectCapture {
+            "fields": Map {
+              "key" => PrimitiveCapture {
+                "nullable": false,
+                "type": "TEXT",
+              },
+              "key2" => PrimitiveCapture {
+                "nullable": false,
+                "type": "TEXT",
+              },
+            },
+            "nullable": false,
+            "type": "OBJECT",
+          },
+        },
+        "nullable": false,
+        "type": "OBJECT",
+      },
+      "type": "LIST",
+    },
+  },
+  "nullable": false,
+  "type": "OBJECT",
+}
+`;
+
+exports[`Typeanalyzer Snapshot > should reconcile nullability of preexisting fields 3`] = `
+ObjectCapture {
+  "fields": Map {
+    "id" => PrimitiveCapture {
+      "nullable": true,
+      "type": "TEXT",
+    },
+    "nullValue" => NullCapture {
+      "type": "NULL",
+    },
+    "active" => PrimitiveCapture {
+      "nullable": true,
+      "type": "BOOLEAN",
+    },
+    "count" => PrimitiveCapture {
+      "nullable": true,
+      "type": "INT",
+    },
+    "countLong" => PrimitiveCapture {
+      "nullable": true,
+      "type": "INT",
+    },
+    "fraction" => PrimitiveCapture {
+      "nullable": true,
+      "type": "DOUBLE",
+    },
+    "fractionFloat" => PrimitiveCapture {
+      "nullable": true,
+      "type": "DOUBLE",
+    },
+    "emptyArray" => ListCapture {
+      "nullable": true,
+      "subtype": UnknownCapture {
+        "type": "UNKNOWN",
+      },
+      "type": "LIST",
+    },
+    "listOfStuff" => ListCapture {
+      "nullable": true,
+      "subtype": ObjectCapture {
+        "fields": Map {
+          "id" => PrimitiveCapture {
+            "nullable": false,
+            "type": "TEXT",
+          },
+          "meta" => ObjectCapture {
+            "fields": Map {
+              "key" => PrimitiveCapture {
+                "nullable": false,
+                "type": "TEXT",
+              },
+              "key2" => PrimitiveCapture {
+                "nullable": false,
+                "type": "TEXT",
+              },
+            },
+            "nullable": false,
+            "type": "OBJECT",
+          },
+        },
+        "nullable": false,
+        "type": "OBJECT",
+      },
+      "type": "LIST",
+    },
+  },
+  "nullable": true,
+  "type": "OBJECT",
+}
+`;
+
+exports[`Typeanalyzer Snapshot > should reconcile nullability of preexisting fields 4`] = `
+ObjectCapture {
+  "fields": Map {
+    "id" => PrimitiveCapture {
+      "nullable": true,
+      "type": "TEXT",
+    },
+    "nullValue" => NullCapture {
+      "type": "NULL",
+    },
+    "active" => PrimitiveCapture {
+      "nullable": true,
+      "type": "BOOLEAN",
+    },
+    "count" => PrimitiveCapture {
+      "nullable": true,
+      "type": "INT",
+    },
+    "countLong" => PrimitiveCapture {
+      "nullable": true,
+      "type": "INT",
+    },
+    "fraction" => PrimitiveCapture {
+      "nullable": true,
+      "type": "DOUBLE",
+    },
+    "fractionFloat" => PrimitiveCapture {
+      "nullable": true,
+      "type": "DOUBLE",
+    },
+    "emptyArray" => ListCapture {
+      "nullable": true,
+      "subtype": UnknownCapture {
+        "type": "UNKNOWN",
+      },
+      "type": "LIST",
+    },
+    "listOfStuff" => ListCapture {
+      "nullable": true,
+      "subtype": ObjectCapture {
+        "fields": Map {
+          "id" => PrimitiveCapture {
+            "nullable": false,
+            "type": "TEXT",
+          },
+          "meta" => ObjectCapture {
+            "fields": Map {
+              "key" => PrimitiveCapture {
+                "nullable": false,
+                "type": "TEXT",
+              },
+              "key2" => PrimitiveCapture {
+                "nullable": false,
+                "type": "TEXT",
+              },
+            },
+            "nullable": false,
+            "type": "OBJECT",
+          },
+        },
+        "nullable": false,
+        "type": "OBJECT",
+      },
+      "type": "LIST",
+    },
+  },
+  "nullable": true,
+  "type": "OBJECT",
+}
+`;
+
+exports[`Typeanalyzer Snapshot > should reconcile nullability of preexisting fields 5`] = `
+ObjectCapture {
+  "fields": Map {
+    "id" => PrimitiveCapture {
+      "nullable": true,
+      "type": "TEXT",
+    },
+    "nullValue" => NullCapture {
+      "type": "NULL",
+    },
+    "active" => PrimitiveCapture {
+      "nullable": true,
+      "type": "BOOLEAN",
+    },
+    "count" => PrimitiveCapture {
+      "nullable": true,
+      "type": "INT",
+    },
+    "countLong" => PrimitiveCapture {
+      "nullable": true,
+      "type": "INT",
+    },
+    "fraction" => PrimitiveCapture {
+      "nullable": true,
+      "type": "DOUBLE",
+    },
+    "fractionFloat" => PrimitiveCapture {
+      "nullable": true,
+      "type": "DOUBLE",
+    },
+    "emptyArray" => ListCapture {
+      "nullable": true,
+      "subtype": UnknownCapture {
+        "type": "UNKNOWN",
+      },
+      "type": "LIST",
+    },
+    "listOfStuff" => ListCapture {
+      "nullable": true,
+      "subtype": ObjectCapture {
+        "fields": Map {
+          "id" => PrimitiveCapture {
+            "nullable": true,
+            "type": "TEXT",
+          },
+          "meta" => ObjectCapture {
+            "fields": Map {
+              "key" => PrimitiveCapture {
+                "nullable": true,
+                "type": "TEXT",
+              },
+              "key2" => PrimitiveCapture {
+                "nullable": true,
+                "type": "TEXT",
+              },
+            },
+            "nullable": true,
+            "type": "OBJECT",
+          },
+        },
+        "nullable": true,
+        "type": "OBJECT",
+      },
+      "type": "LIST",
+    },
+  },
+  "nullable": true,
+  "type": "OBJECT",
+}
+`;
+
+exports[`Typeanalyzer Snapshot > should update all nullability fields of lists 1`] = `
+ObjectCapture {
+  "fields": Map {
+    "list" => ListCapture {
+      "nullable": false,
+      "subtype": UnknownCapture {
+        "type": "UNKNOWN",
+      },
+      "type": "LIST",
+    },
+  },
+  "nullable": false,
+  "type": "OBJECT",
+}
+`;
+
+exports[`Typeanalyzer Snapshot > should update all nullability fields of lists 2`] = `
+ObjectCapture {
+  "fields": Map {
+    "list" => ListCapture {
+      "nullable": false,
+      "subtype": PrimitiveCapture {
+        "nullable": false,
+        "type": "TEXT",
+      },
+      "type": "LIST",
+    },
+  },
+  "nullable": false,
+  "type": "OBJECT",
+}
+`;
+
+exports[`Typeanalyzer Snapshot > should update all nullability fields of lists 3`] = `
+ObjectCapture {
+  "fields": Map {
+    "list" => ListCapture {
+      "nullable": false,
+      "subtype": PrimitiveCapture {
+        "nullable": true,
+        "type": "TEXT",
+      },
+      "type": "LIST",
+    },
+  },
+  "nullable": false,
+  "type": "OBJECT",
+}
+`;
+
+exports[`Typeanalyzer Snapshot > should update all nullability fields of lists 4`] = `
+ObjectCapture {
+  "fields": Map {
+    "list" => ListCapture {
+      "nullable": true,
+      "subtype": PrimitiveCapture {
+        "nullable": true,
+        "type": "TEXT",
+      },
+      "type": "LIST",
+    },
+  },
+  "nullable": false,
+  "type": "OBJECT",
+}
+`;
+
+exports[`Typeanalyzer Snapshot > should update all nullability fields of lists 5`] = `
+ObjectCapture {
+  "fields": Map {
+    "list" => ListCapture {
+      "nullable": true,
+      "subtype": PrimitiveCapture {
+        "nullable": true,
+        "type": "TEXT",
+      },
+      "type": "LIST",
+    },
+  },
+  "nullable": true,
+  "type": "OBJECT",
+}
+`;

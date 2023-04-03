@@ -1,0 +1,33 @@
+{
+  "name": "@nutgaard/typeanalyzer",
+  "version": "0.0.1",
+  "description": "Captures and analyzes datastructures",
+  "main": "./dist/esm/index.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    "types": "./dist/types/index.d.ts",
+    "import": "./dist/esm/index.js",
+    "require": "./dist/cjs/index.js",
+    "default": "./dist/esm/index.js"
+  },
+  "scripts": {
+    "build": "npm run build:esm & npm run build:cjs",
+    "build:esm": "tsc --project tsconfig.esm.json",
+    "build:cjs": "tsc --project tsconfig.cjs.json",
+    "test": "vitest",
+    "commit": "cz"
+  },
+  "author": "Nicklas Utgaard",
+  "license": "MIT",
+  "devDependencies": {
+    "@vitest/coverage-c8": "^0.29.8",
+    "cz-conventional-changelog": "^3.3.0",
+    "typescript": "^5.0.3",
+    "vitest": "^0.29.8"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
