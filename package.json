@@ -1,6 +1,6 @@
 {
   "name": "@nutgaard/typeanalyzer",
-  "version": "0.0.1",
+  "version": "0.0.0-development",
   "description": "Captures and analyzes datastructures",
   "main": "./dist/esm/index.js",
   "types": "./dist/types/index.d.ts",
@@ -15,13 +15,16 @@
     "build:esm": "tsc --project tsconfig.esm.json",
     "build:cjs": "tsc --project tsconfig.cjs.json",
     "test": "vitest",
-    "commit": "cz"
+    "commit": "cz",
+    "semantic-release": "semantic-release"
   },
   "author": "Nicklas Utgaard",
   "license": "MIT",
   "devDependencies": {
     "@vitest/coverage-c8": "^0.29.8",
+    "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
+    "semantic-release": "^21.0.1",
     "typescript": "^5.0.3",
     "vitest": "^0.29.8"
   },
@@ -29,5 +32,9 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nutgaard/typeanalyzer.git"
   }
 }
