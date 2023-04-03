@@ -2,8 +2,12 @@ name: Test, build and publish
 
 on: [push]
 
+permissions:
+  contents: write
+
 env:
   CI: true
+
 jobs:
   test-build-publish:
     name: Test and build
