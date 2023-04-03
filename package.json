@@ -34,6 +34,9 @@
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
+  "release": {
+    "branches": ["main"]
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/nutgaard/typeanalyzer.git"
