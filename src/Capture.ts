@@ -8,7 +8,7 @@ export abstract class Capture {
     }
 
     reconcile(other: Capture): Capture {
-        if (this.type !== other.type) {
+        if (this.constructor.name !== other.constructor.name) {
             if (this instanceof UnknownCapture) return other;
             else if (other instanceof UnknownCapture) return this;
             else if (this instanceof NullCapture && other instanceof PrimitiveCapture) return other.copy({ nullable: true })
@@ -19,8 +19,8 @@ export abstract class Capture {
             else if (this instanceof ObjectCapture && other instanceof NullCapture) return this.copy({ nullable: true })
             else throw new Error(`
                 Type mismatch, and could not reconcile types. Expected type ${this.type}, but got ${other.type}.
-                Base: ${this}
-                Other: ${other}
+                Base: ${JSON.stringify(this)}
+                Other: ${JSON.stringify(other)}
             `)
         } else {
             if (this instanceof PrimitiveCapture) return this.copy({ nullable: this.nullable || (other as PrimitiveCapture).nullable })
