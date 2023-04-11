@@ -44,7 +44,7 @@ export class TypescriptFormat implements Format {
     fieldType(type: CaptureType, typeReference?: string): string {
         switch (type) {
             case CaptureType.UNKNOWN:
-                return "any";
+                return "unknown";
             case CaptureType.NULL:
                 return "null";
             case CaptureType.BOOLEAN:

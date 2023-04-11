@@ -323,7 +323,7 @@ exports[`Typeanalyzer Snapshot > should prettyprint output 1`] = `
   countLong: number;
   fraction: number;
   fractionFloat: number;
-  emptyArray: Array<any>;
+  emptyArray: Array<unknown>;
   listOfStuff: Array<Generated_c66d29ffe7fff>;
 }
 
