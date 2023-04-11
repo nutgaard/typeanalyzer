@@ -35,7 +35,8 @@ export class TypescriptFormat implements Format {
     appendType(sb: StringBuilder, type: Type): void {
         sb.appendLine(`interface ${type.name} {`)
         for (const field of type.fields) {
-            sb.appendLine(`  ${field.name}: ${field.type}${field.nullability ? ' | null' : ''};`)
+            const nullability = field.type !== 'null' && field.nullability ? ' | null' : '';
+            sb.appendLine(`  ${field.name}: ${field.type}${nullability};`)
         }
         sb.appendLine(`}`)
     }

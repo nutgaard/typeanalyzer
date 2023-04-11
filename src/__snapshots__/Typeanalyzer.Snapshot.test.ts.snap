@@ -317,7 +317,7 @@ ObjectCapture {
 exports[`Typeanalyzer Snapshot > should prettyprint output 1`] = `
 "interface Generated_691eefc82ffff {
   id: string;
-  nullValue: null | null;
+  nullValue: null;
   active: boolean;
   count: number;
   countLong: number;
