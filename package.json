@@ -10,6 +10,10 @@
     "require": "./dist/cjs/index.js",
     "default": "./dist/esm/index.js"
   },
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
     "build": "npm run build:esm & npm run build:cjs",
     "build:esm": "tsc --project tsconfig.esm.json",
