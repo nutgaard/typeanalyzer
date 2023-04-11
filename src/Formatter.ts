@@ -2,9 +2,14 @@ import {CaptureType} from "./CaptureType";
 import {StringBuilder} from "./utils/StringBuilder";
 import {PRNG, randomInt, seededRandom} from "./Random";
 import {Capture, ListCapture, ObjectCapture, PrimitiveCapture} from "./Capture";
+import {CaptureConfig} from "./Typeanalyzer";
 
+interface FormatContext {
+    sb: StringBuilder;
+    config: CaptureConfig;
+}
 export interface Format {
-    appendType(sb: StringBuilder, type: Type): void
+    appendType(ctx: FormatContext, type: Type): void
 
     fieldType(type: CaptureType, typeReference?: string): string
 }
@@ -23,22 +28,35 @@ class Field {
     readonly name: string;
     readonly type: string;
     readonly nullability: boolean;
+    readonly values: Set<any> | undefined;
 
-    constructor(name: string, type: string, nullability: boolean) {
+    constructor(name: string, type: string, nullability: boolean, values: Set<any> | undefined = undefined) {
         this.name = name;
         this.type = type;
         this.nullability = nullability;
+        this.values = values;
     }
 }
 
 export class TypescriptFormat implements Format {
-    appendType(sb: StringBuilder, type: Type): void {
-        sb.appendLine(`interface ${type.name} {`)
+    appendType(ctx: FormatContext, type: Type): void {
+        ctx.sb.appendLine(`interface ${type.name} {`)
         for (const field of type.fields) {
-            const nullability = field.type !== 'null' && field.nullability ? ' | null' : '';
-            sb.appendLine(`  ${field.name}: ${field.type}${nullability};`)
+            if (field.values && (field.values?.size ?? Number.MAX_SAFE_INTEGER) <= ctx.config.uniontypeThreshold) {
+                const values = Array.from(field.values) ?? [];
+                const nullability = (values.includes(null) || values.includes(undefined)) ? ' | null' : '';
+                const uniontype = values
+                    .filter(it => it !== null && it !== undefined)
+                    .map(it => field.type === 'string' ? `'${it}'` : it)
+                    .join(' | ');
+
+                ctx.sb.appendLine(`  ${field.name}: ${uniontype}${nullability};`)
+            } else {
+                const nullability = field.type !== 'null' && field.nullability ? ' | null' : '';
+                ctx.sb.appendLine(`  ${field.name}: ${field.type}${nullability};`)
+            }
         }
-        sb.appendLine(`}`)
+        ctx.sb.appendLine(`}`)
     }
 
     fieldType(type: CaptureType, typeReference?: string): string {
@@ -64,12 +82,12 @@ export class TypescriptFormat implements Format {
 }
 
 export class KotlinFormat implements Format {
-    appendType(sb: StringBuilder, type: Type): void {
-        sb.appendLine(`data class ${type.name}(`)
+    appendType(ctx: FormatContext, type: Type): void {
+        ctx.sb.appendLine(`data class ${type.name}(`)
         for (const field of type.fields) {
-            sb.appendLine(`    val ${field.name}: ${field.type}${field.nullability ? '?' : ''},`)
+            ctx.sb.appendLine(`    val ${field.name}: ${field.type}${field.nullability ? '?' : ''},`)
         }
-        sb.appendLine(`)`)
+        ctx.sb.appendLine(`)`)
     }
 
     fieldType(type: CaptureType, typeReference?: string): string {
@@ -94,21 +112,32 @@ export class KotlinFormat implements Format {
     }
 }
 
+export interface FormatterConfig {
+    captureValuesFor: CaptureType[];
+}
+
 export class Formatter {
     private format: Format;
     private rnd: PRNG;
+    private config: CaptureConfig;
     private nameMap = new Map<ObjectCapture, string>();
 
-    constructor(format: Format, rnd: PRNG = seededRandom(1)) {
+    constructor(
+        format: Format,
+        config: CaptureConfig,
+        rnd: PRNG = seededRandom(1)
+    ) {
         this.format = format;
+        this.config = config;
         this.rnd = rnd;
     }
 
     print(capture: Capture): string {
         const types = this.findTypes(capture);
         const sb = new StringBuilder();
+        const ctx : FormatContext = { sb, config: this.config }
         for (const type of types.values()) {
-            this.format.appendType(sb, type);
+            this.format.appendType(ctx, type);
             sb.appendLine("");
         }
         return sb.toString();
@@ -142,7 +171,10 @@ export class Formatter {
                 else if (value instanceof ObjectCapture) nullability = value.nullable;
                 else nullability = true;
 
-                return new Field(key, this.createTypeName(value), nullability)
+                let values = undefined;
+                if (value instanceof PrimitiveCapture && this.config.lut[value.type]) values = value.values;
+
+                return new Field(key, this.createTypeName(value), nullability, values)
             })
 
         return new Type(name, fields)
