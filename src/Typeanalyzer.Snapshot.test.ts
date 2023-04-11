@@ -1,6 +1,7 @@
-import { describe, it, expect } from 'vitest';
+import {describe, expect, it} from 'vitest';
 import {Typeanalyzer} from "./Typeanalyzer";
 import {Formatter, KotlinFormat, TypescriptFormat} from "./Formatter";
+import {CaptureType} from "./CaptureType";
 
 
 interface RootObject {
@@ -134,7 +135,31 @@ describe('Typeanalyzer Snapshot', () => {
         const analyzer = new Typeanalyzer();
         const capture = analyzer.capture(valueObject);
 
-        expect(new Formatter(new TypescriptFormat()).print(capture)).toMatchSnapshot();
-        expect(new Formatter(new KotlinFormat()).print(capture)).toMatchSnapshot();
+        expect(analyzer.print(new TypescriptFormat())).toMatchSnapshot();
+        expect(new Formatter(new KotlinFormat(), { uniontypeThreshold: 0, captureValuesFor: [], lut: {}}).print(capture)).toMatchSnapshot();
+    });
+
+    it('should create uniontype if below threshold', () => {
+        const analyzer = new Typeanalyzer({ uniontypeThreshold: 5, captureValuesFor: [CaptureType.TEXT] });
+        analyzer.capture({ key: 'value1' });
+        analyzer.capture({ key: 'value2' });
+        analyzer.capture({ key: 'value3' });
+        analyzer.capture({ key: 'value4' });
+        analyzer.capture({ key: 'value5' });
+
+        expect(analyzer.print(new TypescriptFormat())).toMatchSnapshot();
+    });
+
+    it('should stop capturing data after union threshold is met', () => {
+        const analyzer = new Typeanalyzer({ uniontypeThreshold: 2, captureValuesFor: [CaptureType.TEXT] });
+        analyzer.capture({ key: 'value1' });
+        analyzer.capture({ key: 'value2' });
+        analyzer.capture({ key: 'value3' });
+        analyzer.capture({ key: 'value4' });
+        analyzer.capture({ key: 'value5' });
+        analyzer.capture({ key: 'value6' });
+
+        expect(analyzer.report()).toMatchSnapshot();
+        expect(analyzer.print(new TypescriptFormat())).toMatchSnapshot()
     });
 });
