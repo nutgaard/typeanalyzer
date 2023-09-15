@@ -6,6 +6,7 @@ ObjectCapture {
     "id" => PrimitiveCapture {
       "nullable": false,
       "type": "TEXT",
+      "values": Set {},
     },
     "nullValue" => NullCapture {
       "type": "NULL",
@@ -13,22 +14,27 @@ ObjectCapture {
     "active" => PrimitiveCapture {
       "nullable": false,
       "type": "BOOLEAN",
+      "values": Set {},
     },
     "count" => PrimitiveCapture {
       "nullable": false,
       "type": "INT",
+      "values": Set {},
     },
     "countLong" => PrimitiveCapture {
       "nullable": false,
       "type": "INT",
+      "values": Set {},
     },
     "fraction" => PrimitiveCapture {
       "nullable": false,
       "type": "DOUBLE",
+      "values": Set {},
     },
     "fractionFloat" => PrimitiveCapture {
       "nullable": false,
       "type": "DOUBLE",
+      "values": Set {},
     },
     "emptyArray" => ListCapture {
       "nullable": false,
@@ -44,16 +50,19 @@ ObjectCapture {
           "id" => PrimitiveCapture {
             "nullable": false,
             "type": "TEXT",
+            "values": Set {},
           },
           "meta" => ObjectCapture {
             "fields": Map {
               "key" => PrimitiveCapture {
                 "nullable": false,
                 "type": "TEXT",
+                "values": Set {},
               },
               "key2" => PrimitiveCapture {
                 "nullable": false,
                 "type": "TEXT",
+                "values": Set {},
               },
             },
             "nullable": false,
@@ -71,12 +80,20 @@ ObjectCapture {
 }
 `;
 
+exports[`Typeanalyzer Snapshot > should create uniontype if below threshold 1`] = `
+"interface Generated_16b7135188ffff {
+  key: 'value1' | 'value2' | 'value3' | 'value4' | 'value5';
+}
+"
+`;
+
 exports[`Typeanalyzer Snapshot > should make key mismatches into nullable elements 1`] = `
 ObjectCapture {
   "fields": Map {
     "key1" => PrimitiveCapture {
       "nullable": false,
       "type": "TEXT",
+      "values": Set {},
     },
   },
   "nullable": false,
@@ -90,10 +107,12 @@ ObjectCapture {
     "key2" => PrimitiveCapture {
       "nullable": true,
       "type": "TEXT",
+      "values": Set {},
     },
     "key1" => PrimitiveCapture {
       "nullable": true,
       "type": "TEXT",
+      "values": Set {},
     },
   },
   "nullable": false,
@@ -107,6 +126,7 @@ ObjectCapture {
     "id" => PrimitiveCapture {
       "nullable": false,
       "type": "TEXT",
+      "values": Set {},
     },
     "nullValue" => NullCapture {
       "type": "NULL",
@@ -114,22 +134,27 @@ ObjectCapture {
     "active" => PrimitiveCapture {
       "nullable": false,
       "type": "BOOLEAN",
+      "values": Set {},
     },
     "count" => PrimitiveCapture {
       "nullable": false,
       "type": "INT",
+      "values": Set {},
     },
     "countLong" => PrimitiveCapture {
       "nullable": false,
       "type": "INT",
+      "values": Set {},
     },
     "fraction" => PrimitiveCapture {
       "nullable": false,
       "type": "DOUBLE",
+      "values": Set {},
     },
     "fractionFloat" => PrimitiveCapture {
       "nullable": false,
       "type": "DOUBLE",
+      "values": Set {},
     },
     "emptyArray" => ListCapture {
       "nullable": false,
@@ -145,16 +170,19 @@ ObjectCapture {
           "id" => PrimitiveCapture {
             "nullable": false,
             "type": "TEXT",
+            "values": Set {},
           },
           "meta" => ObjectCapture {
             "fields": Map {
               "key" => PrimitiveCapture {
                 "nullable": false,
                 "type": "TEXT",
+                "values": Set {},
               },
               "key2" => PrimitiveCapture {
                 "nullable": false,
                 "type": "TEXT",
+                "values": Set {},
               },
             },
             "nullable": false,
@@ -178,6 +206,7 @@ ObjectCapture {
     "id" => PrimitiveCapture {
       "nullable": false,
       "type": "TEXT",
+      "values": Set {},
     },
     "nullValue" => NullCapture {
       "type": "NULL",
@@ -185,22 +214,27 @@ ObjectCapture {
     "active" => PrimitiveCapture {
       "nullable": false,
       "type": "BOOLEAN",
+      "values": Set {},
     },
     "count" => PrimitiveCapture {
       "nullable": false,
       "type": "INT",
+      "values": Set {},
     },
     "countLong" => PrimitiveCapture {
       "nullable": false,
       "type": "INT",
+      "values": Set {},
     },
     "fraction" => PrimitiveCapture {
       "nullable": false,
       "type": "DOUBLE",
+      "values": Set {},
     },
     "fractionFloat" => PrimitiveCapture {
       "nullable": false,
       "type": "DOUBLE",
+      "values": Set {},
     },
     "emptyArray" => ListCapture {
       "nullable": false,
@@ -216,16 +250,19 @@ ObjectCapture {
           "id" => PrimitiveCapture {
             "nullable": false,
             "type": "TEXT",
+            "values": Set {},
           },
           "meta" => ObjectCapture {
             "fields": Map {
               "key" => PrimitiveCapture {
                 "nullable": false,
                 "type": "TEXT",
+                "values": Set {},
               },
               "key2" => PrimitiveCapture {
                 "nullable": false,
                 "type": "TEXT",
+                "values": Set {},
               },
             },
             "nullable": false,
@@ -249,22 +286,27 @@ ObjectCapture {
     "active" => PrimitiveCapture {
       "nullable": false,
       "type": "BOOLEAN",
+      "values": Set {},
     },
     "count" => PrimitiveCapture {
       "nullable": true,
       "type": "INT",
+      "values": Set {},
     },
     "countLong" => PrimitiveCapture {
       "nullable": true,
       "type": "INT",
+      "values": Set {},
     },
     "fraction" => PrimitiveCapture {
       "nullable": true,
       "type": "DOUBLE",
+      "values": Set {},
     },
     "id" => PrimitiveCapture {
       "nullable": true,
       "type": "TEXT",
+      "values": Set {},
     },
     "nullValue" => NullCapture {
       "type": "NULL",
@@ -272,6 +314,7 @@ ObjectCapture {
     "fractionFloat" => PrimitiveCapture {
       "nullable": true,
       "type": "DOUBLE",
+      "values": Set {},
     },
     "emptyArray" => ListCapture {
       "nullable": true,
@@ -287,16 +330,19 @@ ObjectCapture {
           "id" => PrimitiveCapture {
             "nullable": false,
             "type": "TEXT",
+            "values": Set {},
           },
           "meta" => ObjectCapture {
             "fields": Map {
               "key" => PrimitiveCapture {
                 "nullable": false,
                 "type": "TEXT",
+                "values": Set {},
               },
               "key2" => PrimitiveCapture {
                 "nullable": false,
                 "type": "TEXT",
+                "values": Set {},
               },
             },
             "nullable": false,
@@ -370,6 +416,7 @@ ObjectCapture {
     "id" => PrimitiveCapture {
       "nullable": false,
       "type": "TEXT",
+      "values": Set {},
     },
     "nullValue" => NullCapture {
       "type": "NULL",
@@ -377,22 +424,27 @@ ObjectCapture {
     "active" => PrimitiveCapture {
       "nullable": false,
       "type": "BOOLEAN",
+      "values": Set {},
     },
     "count" => PrimitiveCapture {
       "nullable": false,
       "type": "INT",
+      "values": Set {},
     },
     "countLong" => PrimitiveCapture {
       "nullable": false,
       "type": "INT",
+      "values": Set {},
     },
     "fraction" => PrimitiveCapture {
       "nullable": false,
       "type": "DOUBLE",
+      "values": Set {},
     },
     "fractionFloat" => PrimitiveCapture {
       "nullable": false,
       "type": "DOUBLE",
+      "values": Set {},
     },
     "emptyArray" => ListCapture {
       "nullable": false,
@@ -408,16 +460,19 @@ ObjectCapture {
           "id" => PrimitiveCapture {
             "nullable": false,
             "type": "TEXT",
+            "values": Set {},
           },
           "meta" => ObjectCapture {
             "fields": Map {
               "key" => PrimitiveCapture {
                 "nullable": false,
                 "type": "TEXT",
+                "values": Set {},
               },
               "key2" => PrimitiveCapture {
                 "nullable": false,
                 "type": "TEXT",
+                "values": Set {},
               },
             },
             "nullable": false,
@@ -441,6 +496,7 @@ ObjectCapture {
     "id" => PrimitiveCapture {
       "nullable": true,
       "type": "TEXT",
+      "values": Set {},
     },
     "nullValue" => NullCapture {
       "type": "NULL",
@@ -448,22 +504,27 @@ ObjectCapture {
     "active" => PrimitiveCapture {
       "nullable": true,
       "type": "BOOLEAN",
+      "values": Set {},
     },
     "count" => PrimitiveCapture {
       "nullable": true,
       "type": "INT",
+      "values": Set {},
     },
     "countLong" => PrimitiveCapture {
       "nullable": true,
       "type": "INT",
+      "values": Set {},
     },
     "fraction" => PrimitiveCapture {
       "nullable": true,
       "type": "DOUBLE",
+      "values": Set {},
     },
     "fractionFloat" => PrimitiveCapture {
       "nullable": true,
       "type": "DOUBLE",
+      "values": Set {},
     },
     "emptyArray" => ListCapture {
       "nullable": true,
@@ -479,16 +540,19 @@ ObjectCapture {
           "id" => PrimitiveCapture {
             "nullable": false,
             "type": "TEXT",
+            "values": Set {},
           },
           "meta" => ObjectCapture {
             "fields": Map {
               "key" => PrimitiveCapture {
                 "nullable": false,
                 "type": "TEXT",
+                "values": Set {},
               },
               "key2" => PrimitiveCapture {
                 "nullable": false,
                 "type": "TEXT",
+                "values": Set {},
               },
             },
             "nullable": false,
@@ -512,6 +576,7 @@ ObjectCapture {
     "id" => PrimitiveCapture {
       "nullable": true,
       "type": "TEXT",
+      "values": Set {},
     },
     "nullValue" => NullCapture {
       "type": "NULL",
@@ -519,22 +584,27 @@ ObjectCapture {
     "active" => PrimitiveCapture {
       "nullable": true,
       "type": "BOOLEAN",
+      "values": Set {},
     },
     "count" => PrimitiveCapture {
       "nullable": true,
       "type": "INT",
+      "values": Set {},
     },
     "countLong" => PrimitiveCapture {
       "nullable": true,
       "type": "INT",
+      "values": Set {},
     },
     "fraction" => PrimitiveCapture {
       "nullable": true,
       "type": "DOUBLE",
+      "values": Set {},
     },
     "fractionFloat" => PrimitiveCapture {
       "nullable": true,
       "type": "DOUBLE",
+      "values": Set {},
     },
     "emptyArray" => ListCapture {
       "nullable": true,
@@ -550,16 +620,19 @@ ObjectCapture {
           "id" => PrimitiveCapture {
             "nullable": false,
             "type": "TEXT",
+            "values": Set {},
           },
           "meta" => ObjectCapture {
             "fields": Map {
               "key" => PrimitiveCapture {
                 "nullable": false,
                 "type": "TEXT",
+                "values": Set {},
               },
               "key2" => PrimitiveCapture {
                 "nullable": false,
                 "type": "TEXT",
+                "values": Set {},
               },
             },
             "nullable": false,
@@ -583,6 +656,7 @@ ObjectCapture {
     "id" => PrimitiveCapture {
       "nullable": true,
       "type": "TEXT",
+      "values": Set {},
     },
     "nullValue" => NullCapture {
       "type": "NULL",
@@ -590,22 +664,27 @@ ObjectCapture {
     "active" => PrimitiveCapture {
       "nullable": true,
       "type": "BOOLEAN",
+      "values": Set {},
     },
     "count" => PrimitiveCapture {
       "nullable": true,
       "type": "INT",
+      "values": Set {},
     },
     "countLong" => PrimitiveCapture {
       "nullable": true,
       "type": "INT",
+      "values": Set {},
     },
     "fraction" => PrimitiveCapture {
       "nullable": true,
       "type": "DOUBLE",
+      "values": Set {},
     },
     "fractionFloat" => PrimitiveCapture {
       "nullable": true,
       "type": "DOUBLE",
+      "values": Set {},
     },
     "emptyArray" => ListCapture {
       "nullable": true,
@@ -621,16 +700,19 @@ ObjectCapture {
           "id" => PrimitiveCapture {
             "nullable": false,
             "type": "TEXT",
+            "values": Set {},
           },
           "meta" => ObjectCapture {
             "fields": Map {
               "key" => PrimitiveCapture {
                 "nullable": false,
                 "type": "TEXT",
+                "values": Set {},
               },
               "key2" => PrimitiveCapture {
                 "nullable": false,
                 "type": "TEXT",
+                "values": Set {},
               },
             },
             "nullable": false,
@@ -654,6 +736,7 @@ ObjectCapture {
     "id" => PrimitiveCapture {
       "nullable": true,
       "type": "TEXT",
+      "values": Set {},
     },
     "nullValue" => NullCapture {
       "type": "NULL",
@@ -661,22 +744,27 @@ ObjectCapture {
     "active" => PrimitiveCapture {
       "nullable": true,
       "type": "BOOLEAN",
+      "values": Set {},
     },
     "count" => PrimitiveCapture {
       "nullable": true,
       "type": "INT",
+      "values": Set {},
     },
     "countLong" => PrimitiveCapture {
       "nullable": true,
       "type": "INT",
+      "values": Set {},
     },
     "fraction" => PrimitiveCapture {
       "nullable": true,
       "type": "DOUBLE",
+      "values": Set {},
     },
     "fractionFloat" => PrimitiveCapture {
       "nullable": true,
       "type": "DOUBLE",
+      "values": Set {},
     },
     "emptyArray" => ListCapture {
       "nullable": true,
@@ -692,16 +780,19 @@ ObjectCapture {
           "id" => PrimitiveCapture {
             "nullable": true,
             "type": "TEXT",
+            "values": Set {},
           },
           "meta" => ObjectCapture {
             "fields": Map {
               "key" => PrimitiveCapture {
                 "nullable": true,
                 "type": "TEXT",
+                "values": Set {},
               },
               "key2" => PrimitiveCapture {
                 "nullable": true,
                 "type": "TEXT",
+                "values": Set {},
               },
             },
             "nullable": true,
@@ -717,6 +808,31 @@ ObjectCapture {
   "nullable": true,
   "type": "OBJECT",
 }
+`;
+
+exports[`Typeanalyzer Snapshot > should stop capturing data after union threshold is met 1`] = `
+ObjectCapture {
+  "fields": Map {
+    "key" => PrimitiveCapture {
+      "nullable": false,
+      "type": "TEXT",
+      "values": Set {
+        "value1",
+        "value2",
+        "value3",
+      },
+    },
+  },
+  "nullable": false,
+  "type": "OBJECT",
+}
+`;
+
+exports[`Typeanalyzer Snapshot > should stop capturing data after union threshold is met 2`] = `
+"interface Generated_16b7135188ffff {
+  key: string;
+}
+"
 `;
 
 exports[`Typeanalyzer Snapshot > should update all nullability fields of lists 1`] = `
@@ -743,6 +859,7 @@ ObjectCapture {
       "subtype": PrimitiveCapture {
         "nullable": false,
         "type": "TEXT",
+        "values": Set {},
       },
       "type": "LIST",
     },
@@ -760,6 +877,7 @@ ObjectCapture {
       "subtype": PrimitiveCapture {
         "nullable": true,
         "type": "TEXT",
+        "values": Set {},
       },
       "type": "LIST",
     },
@@ -777,6 +895,7 @@ ObjectCapture {
       "subtype": PrimitiveCapture {
         "nullable": true,
         "type": "TEXT",
+        "values": Set {},
       },
       "type": "LIST",
     },
@@ -794,6 +913,7 @@ ObjectCapture {
       "subtype": PrimitiveCapture {
         "nullable": true,
         "type": "TEXT",
+        "values": Set {},
       },
       "type": "LIST",
     },

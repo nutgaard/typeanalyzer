@@ -1,5 +1,6 @@
 import {CaptureType} from "./CaptureType";
 import * as SetUtils from "./utils/SetUtils";
+import {CaptureConfig} from "./Typeanalyzer";
 
 export abstract class Capture {
     readonly type: CaptureType;
@@ -7,14 +8,14 @@ export abstract class Capture {
         this.type = type;
     }
 
-    reconcile(other: Capture): Capture {
+    reconcile(captureConfig: CaptureConfig, other: Capture): Capture {
         if (this.constructor.name !== other.constructor.name) {
             if (this instanceof UnknownCapture) return other;
             else if (other instanceof UnknownCapture) return this;
-            else if (this instanceof NullCapture && other instanceof PrimitiveCapture) return other.copy({ nullable: true })
+            else if (this instanceof NullCapture && other instanceof PrimitiveCapture) return other.copy({ nullable: true }).addValue(captureConfig, null);
             else if (this instanceof NullCapture && other instanceof ListCapture) return other.copy({ nullable: true })
             else if (this instanceof NullCapture && other instanceof ObjectCapture) return other.copy({ nullable: true })
-            else if (this instanceof PrimitiveCapture && other instanceof NullCapture) return this.copy({ nullable: true })
+            else if (this instanceof PrimitiveCapture && other instanceof NullCapture) return this.copy({ nullable: true }).addValue(captureConfig, null)
             else if (this instanceof ListCapture && other instanceof NullCapture) return this.copy({ nullable: true })
             else if (this instanceof ObjectCapture && other instanceof NullCapture) return this.copy({ nullable: true })
             else throw new Error(`
@@ -23,12 +24,16 @@ export abstract class Capture {
                 Other: ${JSON.stringify(other)}
             `)
         } else {
-            if (this instanceof PrimitiveCapture) return this.copy({ nullable: this.nullable || (other as PrimitiveCapture).nullable })
-            else if (this instanceof ListCapture) {
+            if (this instanceof PrimitiveCapture) {
+                return this.copy({
+                    nullable: this.nullable || (other as PrimitiveCapture).nullable,
+                    values: [...this.values, ...(other as PrimitiveCapture).values].slice(0, captureConfig.uniontypeThreshold + 1)
+                });
+            } else if (this instanceof ListCapture) {
                 const otherCapture = other as ListCapture;
                 return this.copy({
                     nullable: this.nullable || otherCapture.nullable,
-                    subtype: this.subtype.reconcile(otherCapture.subtype)
+                    subtype: this.subtype.reconcile(captureConfig, otherCapture.subtype)
                 })
             } else if (this instanceof ObjectCapture) {
                 const otherCapture = other as ObjectCapture;
@@ -43,7 +48,7 @@ export abstract class Capture {
 
                 const newFields = new Map<string, Capture>();
                 commonKeys.forEach((key) => {
-                    newFields.set(key, thisFields.get(key)!.reconcile(otherFields.get(key)!));
+                    newFields.set(key, thisFields.get(key)!.reconcile(captureConfig, otherFields.get(key)!));
                 });
                 newKeys.forEach((key) => {
                     const field = otherFields.get(key)!;
@@ -85,13 +90,22 @@ export class NullCapture extends Capture {
 
 export class PrimitiveCapture extends Capture {
     readonly nullable: boolean;
-    constructor(type: CaptureType, nullable: boolean) {
+    readonly values = new Set<any>();
+    constructor(type: CaptureType, nullable: boolean, values: any[] = []) {
         super(type);
         this.nullable = nullable;
+        this.values = new Set(values);
     }
 
-    copy({ type = this.type, nullable = this.nullable}): PrimitiveCapture {
-        return new PrimitiveCapture(type, nullable)
+    copy({ type = this.type, nullable = this.nullable, values = Array.from(this.values) }): PrimitiveCapture {
+        return new PrimitiveCapture(type, nullable, values)
+    }
+
+    addValue(config: CaptureConfig, value: any): PrimitiveCapture {
+        if (config.lut[this.type] && this.values.size <= config.uniontypeThreshold) {
+            this.values.add(value);
+        }
+        return this;
     }
 }
 
