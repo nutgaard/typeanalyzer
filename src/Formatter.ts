@@ -147,7 +147,7 @@ export class Formatter {
         if (capture instanceof ObjectCapture) {
             const fieldTypes = Array.from(capture.fields.values())
                 .map((it) => this.findTypes(it))
-                .reduce((acc, other) => new Map([...acc, ...other]));
+                .reduce((acc, other) => new Map([...acc, ...other]), new Map());
 
             current.set(capture, this.createType(capture));
             return new Map([...current, ...fieldTypes]);
